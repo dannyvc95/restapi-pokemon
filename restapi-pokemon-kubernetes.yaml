@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi-pokemon
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: restapi-pokemon
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: restapi-pokemon
+    spec:
+      containers:
+      - image: dannyvc95/restapi-pokemon
+        name: restapi-pokemon
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: restapi-pokemon
+  name: pokemon-service
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app.kubernetes.io/name: restapi-pokemon
+  type: LoadBalancer
