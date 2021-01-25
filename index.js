@@ -27,3 +27,5 @@ app.get('/api/v1/pokemon-moves/:language/:pokemonList/:movesLimit', async (req, 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
+
+module.exports = app;

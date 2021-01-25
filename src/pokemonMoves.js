@@ -38,7 +38,7 @@ const onPokemonMoves = async (language, pokemonList, movesLimit) => {
         return { status: 200, data: result };
     }
     
-    return { status: 404, data: 'Invalid pokemon name given' };
+    return { status: 404, data: 'Invalid API use, see documentation for help' };
 };
 
 const arePokemonNamesValid = async pokemonNames => {
@@ -49,7 +49,7 @@ const arePokemonNamesValid = async pokemonNames => {
         // Fetch pokemon information to validate the data integrity
         await Promise.all(pokemonNames.map(async pokemonName => {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-            if (response.status !== 200) {
+            if (response.status !== 200 || pokemonName === '') { 
                 arePokemonNamesValid = false;
             }
         }));
@@ -63,8 +63,11 @@ const arePokemonNamesValid = async pokemonNames => {
 const filterAndTranslateMoves = async (pokemonCommonMoves, language, movesLimit) => {
     // Filter moves
     let filteredMoves = new Array();
-    if (movesLimit < pokemonCommonMoves.length) {
-        for (let i = 0; i < movesLimit; i++) {
+
+    if (Number.isNaN(Number.parseInt(movesLimit))) {
+        filteredMoves = pokemonCommonMoves;
+    } else {
+        for (let i = 0; i < movesLimit && i < pokemonCommonMoves.length; i++) {
             filteredMoves.push(pokemonCommonMoves[i]);
         }
     }

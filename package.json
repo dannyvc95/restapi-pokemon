@@ -4,12 +4,14 @@
   "description": "Pokemon Compare Rest API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Daniel Valle",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "mocha": "^8.2.1",
+    "node-fetch": "^2.6.1",
+    "supertest": "^6.1.2"
   }
 }
