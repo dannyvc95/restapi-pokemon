@@ -35,7 +35,7 @@ const onPokemonMoves = async (language, pokemonList, movesLimit) => {
 
         let result = await filterAndTranslateMoves(pokemonCommonMoves, language, movesLimit);
 
-        return { status: 200, data: result };
+        return { status: 200, data: { common_moves: result } };
     }
     
     return { status: 404, data: 'Invalid API use, see documentation for help' };

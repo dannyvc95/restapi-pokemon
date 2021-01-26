@@ -8,7 +8,7 @@ describe('api endpoints', () => {
             .get('/api/v1/pokemon-moves/en/charizard&pikachu/10')
             .end((err, response) => {
                 assert(response.status === 200);
-                assert(response.body.length === 10);
+                assert(response.body.common_moves.length === 10);
                 done();
             });
     });
@@ -17,8 +17,8 @@ describe('api endpoints', () => {
             .get('/api/v1/pokemon-moves/en/charizard&pikachu/999')
             .end((err, response) => {
                 assert(response.status === 200);
-                assert(response.body.length === 48);
-                assert(response.body.includes('Swift'));
+                assert(response.body.common_moves.length === 48);
+                assert(response.body.common_moves.includes('Swift'));
                 done();
             });
     });
@@ -61,7 +61,7 @@ describe('api endpoints', () => {
             .get('/api/v1/pokemon-moves/en/charizard&pikachu/string')
             .end((err, response) => {
                 assert(response.status === 200);
-                assert(response.body.length === 48);
+                assert(response.body.common_moves.length === 48);
                 done();
             });
     });
