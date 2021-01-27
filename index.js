@@ -14,7 +14,7 @@ app.get('/api/v1/pokemon-advantage/:pokemonOne/:pokemonTwo', async (req, res) =>
     res.status(response.status).send(response.data);
 });
 
-// Pokemon moves endpoint
+// Pokemon moves endpoint ...
 app.get('/api/v1/pokemon-moves/:language/:pokemonList/:movesLimit', async (req, res) => {
     const response = await pokemonMoves.onPokemonMoves(
         req.params.language,
