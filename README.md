@@ -31,16 +31,18 @@ en, cs, ja, zh-Hans, pt-BR.
 
 3. A limit of moves to display, in this case just /5 common moves will be displayed.
 
-As result of your request you will receive an array with the information based on the previously explained parameters.
+As result of your request you will receive an object with the array with the information based on the previously explained parameters.
 
 ```json
-[
-"Take Down",
-"Body Slam",
-"Growl",
-"Double-Edge",
-"Headbutt"
-]
+{
+  "common_moves": [
+    "Headbutt",
+    "Take Down",
+    "Body Slam",
+    "Double-Edge",
+    "Growl"
+  ]
+}
 ```
 
 ## Docker
