@@ -6,11 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: restapi-pokemon
+      app: restapi-pokemon
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: restapi-pokemon
+        app: restapi-pokemon
     spec:
       containers:
       - image: dannyvc95/restapi-pokemon
@@ -22,11 +22,11 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: restapi-pokemon
+    app: restapi-pokemon
   name: pokemon-service
 spec:
   ports:
   - port: 8000
   selector:
-    app.kubernetes.io/name: restapi-pokemon
+    app: restapi-pokemon
   type: LoadBalancer
